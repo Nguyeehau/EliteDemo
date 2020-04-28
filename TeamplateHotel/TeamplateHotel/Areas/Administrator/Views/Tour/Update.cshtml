@@ -1,4 +1,4 @@
-﻿@using TeamplateHotel.Areas.Administrator.EntityModel
+@using TeamplateHotel.Areas.Administrator.EntityModel
 @model ETour
 @{
     Layout = "~/Areas/Administrator/Views/Templates/_LayoutPage.cshtml";
@@ -214,7 +214,7 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="clr"></div>
-                        <h3 class="mg-h">Tab Rooms</h3>
+                        <h3 class="mg-h">Tab Tour</h3>
                         <select id="ListName2" style="width: 122px;">
                             @if (Model.TabHotels != null)
                             {
@@ -239,9 +239,9 @@
                                 {
                                     foreach (var tab in Model.TabHotels)
                                     {
-                                        <div id="divprice2_@(count)" class="price-tabtour2" style="display: none;">
+                                        <div id="divprice2_@(count)" class="price-tabtour" style="display: none;">
                                             <strong>Price: </strong>
-                                            <input type="text" id="TabHotels_@(count)__Price" name="TabHotels[@(count)].Price" value="@tab.Price" class="span1 price-tab" />
+                                            <input type="text" id="TabHotels_@(count)__Price" name="TabHotels[@(count)].Price" value="0" class="span1 price-tab" />
                                         </div>
                                         <h4 id="Content2_@(count)" style="@(count > 0 ? "display: none" : "")">Content Tab Tour : @tab.TitleTabHotel</h4>
                                         <div style="clear: both">
@@ -399,16 +399,14 @@
         });
 
         $('#ListName').change(function () {
-            debugger
+
             desployCkeditor();
             var item = $('#ListName').val();
             $('#Display-Tabs').find('h4').each(function () {
-                debugger
                 //$('#cke_' + this.attr('id')).hide();
                 $(this).hide();
             });
             $('#Display-Tabs').find('div.price-tabtour').each(function () {
-                debugger
                 //$('#cke_' + this.attr('id')).hide();
                 $(this).hide();
             });
@@ -440,6 +438,7 @@
     }
 
     function changeNameTag2() {
+
         $('#ListName2').unbind();
         $('#changeName2').unbind();
         $('#saveName2').unbind();
@@ -457,6 +456,7 @@
 
         });
         $('#saveName2').click(function () {
+
             $('#ListName2').find(":selected").text($('#tabName2').val());
             $('#saveName2').hide();
             $('#delName2').hide();
@@ -523,16 +523,14 @@
         });
 
         $('#ListName2').change(function () {
-            debugger
+
             desployCkeditor2();
             var item = $('#ListName2').val();
             $('#Display-Tabs2').find('h4').each(function () {
-                debugger
                 //$('#cke_' + this.attr('id')).hide();
                 $(this).hide();
             });
             $('#Display-Tabs2').find('div.price-tabtour').each(function () {
-                debugger
                 //$('#cke_' + this.attr('id')).hide();
                 $(this).hide();
             });
@@ -826,6 +824,7 @@
     });
 
     $('#addTab2').click(function () {
+        debugger
         changeNameTag2();
         if ($('#tabName2').val() == "") {
             alert('Please enter name tab tour');
@@ -844,14 +843,16 @@
             $('#ListName2').val(counts);
             desployCkeditor();
             $('#Display-Tabs2').find('h4').each(function () {
+                debugger
                 //$('#cke_' + this.attr('id')).hide();
                 $(this).hide();
             });
             $('#Display-Tabs2').find('div.price-tabtour').each(function () {
+                debugger
                 //$('#cke_' + this.attr('id')).hide();
                 $(this).hide();
             });
-            $('#Display-Tabs2').append(inputPrice + label + textarea);
+            $('#Display-Tabs2').append(inputPrice +label + textarea);
 
 
             $('#tabName2').val("");
